@@ -1,0 +1,59 @@
+{
+  "name": "symbiotic/workerman",
+  "description": "Symbiotic server on Workerman RoadRunner",
+  "license": "MIT",
+  "version": "1.4.0",
+  "keywords": [],
+  "require": {
+    "php": ">=8.0",
+    "symbiotic/full": "^1.4",
+    "symbiotic/console": "^1.4",
+    "workerman/workerman": "^4.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Symbiotic\\Workerman\\": "src/"
+    }
+  },
+  "extra": {
+    "symbiotic": {
+      "id": "workerman",
+      "app": {
+        "app_class": "Symbiotic\\Workerman\\App"
+      },
+      "settings_fields": [
+        {
+          "title": "Http server",
+          "name": "http_server",
+          "type": "group",
+          "fields":[
+            {
+              "label": "Server host",
+              "name": "http_server_host",
+              "type": "text"
+            },
+            {
+              "label": "Server port",
+              "name": "http_server_port",
+              "type": "text"
+            },
+            {
+              "label": "Server domain for http requests",
+              "name": "http_server_alias",
+              "description": "Used when generating urls",
+              "type": "text"
+            }
+          ]
+        }
+
+      ],
+      "settings": {
+        "http_server_host":"localhost",
+        "http_server_port":"80",
+        "http_server_alias":"localhost:80"
+      },
+      "commands": {
+        "worker":"\\Symbiotic\\Workerman\\Commands\\Worker"      }
+    }
+  }
+}
