@@ -14,11 +14,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class Worker extends Command
 {
-    protected ContainerInterface $container;
+    private ContainerInterface $app;
 
     public function __construct(App $container)
     {
-        $this->container = $container;
+        $this->app = $container;
         parent::__construct();
         /**
          *  start
@@ -45,11 +45,11 @@ class Worker extends Command
             );
     }
 
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         match ($input->getArgument('run_command')) {
-            'start' => $this->container->start($input, $output),
-            default => $this->container->workermanCommand($output),
+            'start' => $this->app->start($input, $output),
+            default => $this->app->workermanCommand($output),
         };
         return 0;
     }
