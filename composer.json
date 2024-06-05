@@ -2,7 +2,7 @@
   "name": "symbiotic/workerman",
   "description": "Symbiotic server on Workerman RoadRunner",
   "license": "MIT",
-  "version": "1.4.1",
+  "version": "1.4.1.2",
   "keywords": [],
   "require": {
     "php": ">=8.0",
